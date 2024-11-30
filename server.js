@@ -3,7 +3,7 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -67,4 +67,11 @@ app.get("/logout", (req, res) => {
   res.redirect("/login.html");
 });
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+const fs = require('fs');
+const filePath = './file.txt';
+
+const stream = fs.createReadStream(filePath);
+stream.on('error', (err) => {
+  console.error(`Stream error: ${err.message}`);
+});
+
