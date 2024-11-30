@@ -21,17 +21,24 @@
     
         <main>
           
-                    <h1>Welcome, User</h1>
-                <h2>Your Events</h2>
-                <ul id="event-list"></ul>
-                <form action="/events" method="POST">
-                    <label>Title:</label>
-                    <input type="text" name="title" required>
-                    <label>Description:</label>
-                    <input type="text" name="description" required>
+            <div id="login-section">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter username">
+                <button id="login-button">Login</button>
+            </div>
+    
+            <div id="crud-section" class="hidden">
+                <h2>Manage Events</h2>
+                
+                <form id="add-event-form">
+                    <input type="text" id="event-name" placeholder="Event Name" required>
                     <button type="submit">Add Event</button>
                 </form>
-                <a href="/logout">Logout</a>
+
+                <ul id="events-list">
+                    
+                </ul>
+            </div>
         </main>
     
         <script src="Events.js"></script>
