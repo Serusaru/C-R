@@ -30,4 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
         sessionStorage.removeItem("loggedInUser");
         window.location.reload();
     });
+    app.all('/events', (req, res) => {
+      res.status(405).send('Method Not Allowed');
+    });
+
 });
