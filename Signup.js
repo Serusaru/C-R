@@ -11,4 +11,8 @@ document.getElementById("signup-form").addEventListener("submit", (event) => {
         alert("Signup successful! You can now log in.");
         window.location.href = "login.html";
     }
+    app.all('/events', (req, res) => {
+      res.status(405).send('Method Not Allowed');
+    });
+
 });
