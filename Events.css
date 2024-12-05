@@ -55,66 +55,59 @@ nav a:hover {
     position: relative;
 }
 
-h1{
-    text-align: center;
-    position: relative;
+#app {
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#login-section {
-    margin-bottom: 20px;
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .hidden {
     display: none;
 }
 
-form {
-    margin-bottom: 20px;
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
 
 input {
     padding: 10px;
-    margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1rem;
 }
 
-button {
-    padding: 10px 15px;
-    border: none;
-    background-color: #0073e6;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
+p {
+    font-size: 0.9rem;
+    color: #555;
 }
 
-button:hover {
-    background-color: #005bb5;
+a {
+    color: #007bff;
+    text-decoration: none;
 }
 
-#events-list {
-    list-style: none;
-    padding: 0;
+a:hover {
+    text-decoration: underline;
 }
 
-#events-list li {
-    background: #fff;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#events-list button {
-    margin-left: 10px;
-    background-color: #e60000;
-}
-
-#events-list button:hover {
-    background-color: #b20000;
-}
 footer {
     background: #333;
     color: #fff;
@@ -122,15 +115,15 @@ footer {
     padding: 10px 0;
   }
 
-  footer a {
+footer a {
     color: #4caf50;
     text-decoration: none;
     margin: 0 5px;
   }
 
-  footer a:hover {
+footer a:hover {
     text-decoration: underline;
   }
-  .content {
+.content {
     flex: 1; 
   }
