@@ -24,19 +24,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-</head>
-<body>
-    <form action="signup.php" method="POST">
-        <h2>Sign Up</h2>
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Sign Up</button>
-        <p>Already have an account? <a href="login.php">Login</a></p>
+<html>
+    <head>
+        <link rel ="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+        
+                <div id="Title">
+                    <h2> Capoeira & Roda </h2>
+                </div>
+                
+                <nav>
+                        <a href="index.html">Home</a>
+                        <a href="Events.html">Events</a>
+                        <a href="Store.html">Store</a>
+                        <a href="Aboutus.html">About Us</a>
+                        <a href="Login.html">Login</a>
+                </nav>
+        </header>
+         <form id="signupForm">
+        <h2>Signup</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Signup</button>
+          <div class="form-footer">
+                <p>Already have an account? <a href="Login.html">Login</a></p>
     </form>
-</body>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('/api/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+            alert(data.message);
+            if (response.ok) window.location.href = 'Login.html';
+        });
+    </script>
+        </body>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <footer>
+            <p>&copy; 2024 Capoeira & Roda. All rights reserved.</p>
+            <p>
+                <a href="TS.html">Terms and Services</a>
+                <a href="Privacy.html">Privacy Policy</a>
+                <a href="Support.html">Support</a>
+
+            </p>
+            
+        </footer>
 </html>
