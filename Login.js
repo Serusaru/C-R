@@ -1,37 +1,55 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const greeting = document.getElementById("greeting");
-    const loginForm = document.getElementById("login-form");
-    const logoutBtn = document.getElementById("logout-btn");
-
-    const loggedInUser = sessionStorage.getItem("loggedInUser");
-    if (loggedInUser) {
-        greeting.textContent = `Welcome, ${loggedInUser}!`;
-        loginForm.style.display = "none";
-        logoutBtn.style.display = "block";
+    const username = sessionStorage.getItem("loggedInUser");
+    if (username) {
+        showWelcome(username);
     }
-
-    loginForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        const storedUser = localStorage.getItem(username);
-        if (storedUser && JSON.parse(storedUser).password === password) {
-            sessionStorage.setItem("loggedInUser", username);
-            greeting.textContent = `Welcome, ${username}!`;
-            loginForm.style.display = "none";
-            logoutBtn.style.display = "block";
-        } else {
-            alert("Invalid username or password!");
-        }
-    });
-
-    logoutBtn.addEventListener("click", () => {
-        sessionStorage.removeItem("loggedInUser");
-        window.location.reload();
-    });
-    app.all('/events', (req, res) => {
-      res.status(405).send('Method Not Allowed');
-    });
-
 });
+
+function login() {
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
+
+    const storedPassword = localStorage.getItem(username);
+    if (storedPassword && storedPassword === password) {
+        sessionStorage.setItem("loggedInUser", username);
+        showWelcome(username);
+    } else {
+        alert("Invalid username or password.");
+    }
+}
+
+function signup() {
+    const username = document.getElementById("signup-username").value;
+    const password = document.getElementById("signup-password").value;
+
+    if (localStorage.getItem(username)) {
+        alert("Username already exists. Choose a different one.");
+    } else {
+        localStorage.setItem(username, password);
+        alert("Signup successful! You can now log in.");
+        showLogin();
+    }
+}
+
+function logout() {
+    sessionStorage.removeItem("loggedInUser");
+    showLogin();
+}
+
+function showLogin() {
+    document.getElementById("login-form").classList.remove("hidden");
+    document.getElementById("signup-form").classList.add("hidden");
+    document.getElementById("welcome").classList.add("hidden");
+}
+
+function showSignup() {
+    document.getElementById("login-form").classList.add("hidden");
+    document.getElementById("signup-form").classList.remove("hidden");
+}
+
+function showWelcome(username) {
+    document.getElementById("username-display").textContent = username;
+    document.getElementById("welcome").classList.remove("hidden");
+    document.getElementById("login-form").classList.add("hidden");
+    document.getElementById("signup-form").classList.add("hidden");
+}
