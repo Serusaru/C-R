@@ -1,61 +1,62 @@
-<html>
-    <head>
-        <link rel ="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <header>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup</title>
+    <link rel="stylesheet" href="Login.css">
+</head>
+ <header>
         
                 <div id="Title">
                     <h2> Capoeira & Roda </h2>
                 </div>
                 
                 <nav>
-                        <a href="index.html">Home</a>
+                        <a href="Home.html">Home</a>
                         <a href="Events.html">Events</a>
                         <a href="Store.html">Store</a>
                         <a href="Aboutus.html">About Us</a>
                         <a href="Login.html">Login</a>
                 </nav>
-        </header>
+ </header>
+<body>
+    <div id="app">
+        <div id="signup-form" class="form-container hidden">
+            <h2>Signup</h2>
+            <input type="text" id="signup-username" placeholder="Choose a username" required>
+            <input type="password" id="signup-password" placeholder="Choose a password" required>
+            <button onclick="signup()">Sign Up</button>
+            <p>Already have an account? <a href="#" onclick="showLogin()">Log in here</a></p>
+        </div>
 
-       <form id="loginForm">
-        <h2>Login</h2>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Login</button>
-             <div class="form-footer">
-                <p>Don't have an account? <a href="Signup.html">Sign up</a></p>
-    </form>
+        <div id="login-form" class="form-container">
+            <h2>Login</h2>
+            <input type="text" id="login-username" placeholder="Username" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button onclick="login()">Login</button>
+            <p>Don't have an account? <a href="#" onclick="showSignup()">Sign up here</a></p>
+        </div>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+        
 
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password }),
-            });
+        <div id="welcome" class="hidden">
+            <h2>Welcome, <span id="username-display"></span>!</h2>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<footer>
+    <p>&copy; 2024 Capoeira & Roda. All rights reserved.</p>
+    <p>
+        <a href="TS.html">Terms and Services</a>
+        <a href="Privacy.html">Privacy Policy</a>
+        <a href="Support.html">Support</a>
 
-            const data = await response.json();
-            alert(data.message);
-            if (response.ok) window.location.href = '/dashboard'; 
-        });
-    </script>
-        </body>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <footer>
-            <p>&copy; 2024 Capoeira & Roda. All rights reserved.</p>
-            <p>
-                <a href="TS.html">Terms and Services</a>
-                <a href="Privacy.html">Privacy Policy</a>
-                <a href="Support.html">Support</a>
-
-            </p>
-            
-        </footer>
+    </p>
+    
+</footer>
 </html>
