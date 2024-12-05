@@ -1,7 +1,7 @@
 const cartItems = [
-    { name: "Product 1", price: 29.99 },
-    { name: "Product 2", price: 19.99 },
-    { name: "Product 3", price: 49.99 },
+    { name: "Product 1", price: 40.00 },
+    { name: "Product 2", price: 120.00 },
+    { name: "Product 3", price: 150.00 },
 ];
 
 const cartItemsContainer = document.getElementById('cart-items');
